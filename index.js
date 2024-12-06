@@ -7,14 +7,14 @@ if (getCookie("login")===""){
     redirect("/");
 }
 
-getJSON("https://asia-southeast2-awangga.cloudfunctions.net/jualin/data/user","login",getCookie("login"),responseFunction)
+getJSON("https://asia-southeast2-awangga.cloudfunctions.net/itungin/data/user","login",getCookie("login"),responseFunction)
 
 function responseFunction(result){
     if (result.status === 200){
         setInner("content","Selamat datang "+result.data.name);
         redirect("/dashboard");
     }else{
-        getJSON("https://asia-southeast2-awangga.cloudfunctions.net/jualin/data/konsumen/user","login",getCookie("login"),apiResponse)
+        getJSON("https://asia-southeast2-awangga.cloudfunctions.net/itungin/data/konsumen/user","login",getCookie("login"),apiResponse)
     }
     console.log(result);
 }
