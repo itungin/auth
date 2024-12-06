@@ -26,7 +26,7 @@ function apiResponse(result){
         console.log(result);
     }else{
         setInner("content","Selamat Datang");
-        // redirect("/dashboard");  
+        redirect("https://itung.in.my.id/dashboard/");  
        //redirect("https://wa.me/pamongdesa?text=bantuan+operator");
     }
 }
