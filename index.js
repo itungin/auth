@@ -1,11 +1,11 @@
 import {getCookie} from "https://cdn.jsdelivr.net/gh/jscroot/cookie@0.0.1/croot.js";
 import {setInner} from "https://cdn.jsdelivr.net/gh/jscroot/element@0.1.5/croot.js";
 import {getJSON} from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.7/croot.js";
-// import {redirect} from "https://cdn.jsdelivr.net/gh/jscroot/url@0.0.9/croot.js";
+import {redirect} from "https://cdn.jsdelivr.net/gh/jscroot/url@0.0.9/croot.js";
 
-// if (getCookie("login")===""){
-//     // redirect("/");
-// }
+if (getCookie("login")===""){
+    redirect("https://itung.in.my.id/dashboard/");
+}
 
 getJSON("https://asia-southeast2-awangga.cloudfunctions.net/itungin/data/user","login",getCookie("login"),responseFunction)
 
@@ -24,7 +24,8 @@ function apiResponse(result){
         setInner("content","Selamat datang "+result.data.data.fullname);
         redirect("https://itung.in.my.id/dashboard/");
         console.log(result);
-    }else{
+    }
+    else{
         setInner("content","Selamat Datang");
         redirect("https://itung.in.my.id/dashboard/");  
        //redirect("https://wa.me/pamongdesa?text=bantuan+operator");
