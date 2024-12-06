@@ -22,7 +22,7 @@ function responseFunction(result){
 function apiResponse(result){
     if (result.status===200){
         setInner("content","Selamat datang "+result.data.data.fullname);
-        redirect("https://itung.in.my.id/dashboard/");
+        redirect("/testi");
         console.log(result);
     }
     else{
