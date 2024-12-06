@@ -12,7 +12,7 @@ getJSON("https://asia-southeast2-awangga.cloudfunctions.net/itungin/data/user","
 function responseFunction(result){
     if (result.status === 200){
         setInner("content","Selamat datang "+result.data.name);
-        redirect("https://itung.in.my.id/");
+        redirect("/dashboard");
     }else{
         getJSON("https://asia-southeast2-awangga.cloudfunctions.net/itungin/data/konsumen/user","login",getCookie("login"),apiResponse)
     }
@@ -25,7 +25,7 @@ function apiResponse(result){
         redirect("/testi");
     }else{
         setInner("content","Silahkan lakukan pendaftaran dahulu ke Itungin");
-        redirect("https://itung.in.my.id/dashboard/");  
+        redirect("/");  
        //redirect("https://wa.me/pamongdesa?text=bantuan+operator");
     }
 }
