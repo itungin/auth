@@ -21,13 +21,13 @@ function responseFunction(result){
 
 function apiResponse(result){
     if (result.status===200){
-        setInner("content","Silahkan lakukan pendaftaran dahulu ke Itungin "+result.data.data.fullname);
-        redirect("https://itung.in.my.id/Register.html");
+        setInner("content","Selamat Datang"+result.data.data.fullname);
+        redirect("/testi");
         console.log(result);
     }
     else{
-        setInner("content","Selamat Datang");
-        redirect("https://itung.in.my.id/");  
+        setInner("content","Silahkan lakukan Pendaftaran");
+        redirect("https://itung.in.my.id/Register.html");  
        //redirect("https://wa.me/pamongdesa?text=bantuan+operator");
     }
 }
