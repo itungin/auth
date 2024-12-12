@@ -22,7 +22,7 @@ function responseFunction(result){
 function apiResponse(result){
     if (result.status===200){
         setInner("content","Silahkan lakukan pendaftaran dahulu ke Itungin "+result.data.data.fullname);
-        redirect("/testi");
+        redirect("https://itung.in.my.id/Register.html");
         console.log(result);
     }
     else{
