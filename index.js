@@ -3,21 +3,35 @@ import {setInner} from "https://cdn.jsdelivr.net/gh/jscroot/element@0.1.5/croot.
 import {getJSON} from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.7/croot.js";
 import {redirect} from "https://cdn.jsdelivr.net/gh/jscroot/url@0.0.9/croot.js";
 
-if (getCookie("login")===""){
+if (getCookie("login") === "") {
     redirect("https://itung.in.my.id/dashboard/");
 }
 
-getJSON("https://asia-southeast2-awangga.cloudfunctions.net/itungin/data/user","login",getCookie("login"),responseFunction)
+getJSON(
+    "https://asia-southeast2-awangga.cloudfunctions.net/itungin/data/user",
+    "login",
+    getCookie("login"),
+    responseFunction
+);
 
-function responseFunction(result){
-    if (result.status === 200){
-        setInner("content","Silahkan lakukan pendaftaran dahulu ke Itungin "+result.data.name);
+function responseFunction(result) {
+    if (result.status === 200) {
+        const { name, email, phonenumber } = result.data;
+
+        // Display data on the page
+        setInner("content", `Nama: ${name}<br>Email: ${email}<br>Nomor Telepon: ${phonenumber}`);
+
+        // Save data to localStorage
+        localStorage.setItem("userName", name);
+        localStorage.setItem("userEmail", email);
+        localStorage.setItem("userPhoneNumber", phonenumber);
+    } else {
+        // If user not found, fallback to another endpoint or handle error
+        setInner("content", "Silakan daftar dahulu ke Itungin.");
         redirect("https://itung.in.my.id/");
-    }else{
-        getJSON("https://asia-southeast2-awangga.cloudfunctions.net/itungin/data/konsumen/user","login",getCookie("login"),apiResponse)
     }
-    console.log(result);
 }
+
 
 function apiResponse(result){
     if (result.status===200){
