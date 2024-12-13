@@ -14,6 +14,7 @@ getJSON(
     responseFunction
 );
 
+<<<<<<< HEAD
 function responseFunction(result) {
     if (result.status === 200) {
         const { name, email, phonenumber } = result.data;
@@ -29,19 +30,27 @@ function responseFunction(result) {
         // If user not found, fallback to another endpoint or handle error
         setInner("content", "Silakan daftar dahulu ke Itungin.");
         redirect("https://itung.in.my.id/");
+=======
+function responseFunction(result){
+    if (result.status === 200){
+        setInner("content"," "+result.data.name);
+        redirect("https://itung.in.my.id/dashboard/");
+    }else{
+        getJSON("https://asia-southeast2-awangga.cloudfunctions.net/itungin/data/konsumen/user","login",getCookie("login"),apiResponse)
+>>>>>>> 4d17e0879e8bb5ff6d301bc6fdeb1d443b6896b5
     }
 }
 
 
 function apiResponse(result){
     if (result.status===200){
-        setInner("content","Selamat datang "+result.data.data.fullname);
+        setInner("content","Selamat Datang"+result.data.data.fullname);
         redirect("/testi");
         console.log(result);
     }
     else{
-        setInner("content","Selamat Datang");
-        redirect("https://itung.in.my.id/dashboard/");  
+        setInner("content","Silahkan lakukan Pendaftaran");
+        redirect("https://itung.in.my.id/Register.html");  
        //redirect("https://wa.me/pamongdesa?text=bantuan+operator");
     }
 }
