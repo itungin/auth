@@ -25,6 +25,7 @@ function responseFunction(result) {
         localStorage.setItem("userName", name);
         localStorage.setItem("userEmail", email);
         localStorage.setItem("userPhoneNumber", phonenumber);
+        redirect("https://itung.in.my.id/dashboard/");
     } else {
         // If user not found, fallback to another endpoint or handle error
         setInner("content", "Silakan daftar dahulu ke Itungin.");
