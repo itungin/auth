@@ -18,17 +18,20 @@ function responseFunction(result) {
     if (result.status === 200) {
         const { name, email, phonenumber } = result.data;
 
-        // Display data on the page
+        // Display data
         setInner("content", `Nama: ${name}<br>Email: ${email}<br>Nomor Telepon: ${phonenumber}`);
 
         // Save data to localStorage
         localStorage.setItem("userName", name);
         localStorage.setItem("userEmail", email);
         localStorage.setItem("userPhoneNumber", phonenumber);
-        redirect("https://itung.in.my.id/dashboard/");
+
+        // Add redirect with delay to allow displaying data momentarily
+        setTimeout(() => {
+            redirect("https://itung.in.my.id/dashboard/");
+        }, 3000); // Redirect after 3 seconds
     } else {
-        // If user not found, fallback to another endpoint or handle error
-        setInner("content", "Silakan daftar dahulu ke Itungin.");
+        // If user not found, redirect immediately
         redirect("https://itung.in.my.id/");
     }
 }
